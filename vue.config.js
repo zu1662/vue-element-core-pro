@@ -55,7 +55,12 @@ const vueConfig = {
     }
   },
   css: {
-    loaderOptions: {}
+    loaderOptions: {
+      // 可以设置全局共享的变量
+      scss: {
+        // prependData: `@import "~@/variables.scss";`
+      }
+    }
   },
 
   devServer: {
