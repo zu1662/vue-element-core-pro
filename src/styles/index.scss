@@ -1,0 +1,9 @@
+@import './reset.scss';
+@import './sidebar.scss';
+
+html ,body{
+  height: 100%;
+  box-sizing: border-box;
+  font-family: $font-family;
+  font-size: $font-size-base;
+}
