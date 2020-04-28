@@ -168,25 +168,25 @@ export default {
           > div:first-child {
             width: 1rem;
             height: 100%;
-            background-color: $sidebar-submenu-bg;
+            background-color: #343434;
           }
           > div:last-child {
             flex: 1;
             height: 100%;
-            background-color: $background-color;
+            background-color: #fff;
           }
         }
         &.topmenu {
           flex-direction: column;
           > div:first-child {
-            background-color: $sidebar-submenu-bg;
+            background-color: #343434;
             height: 1rem;
             width: 100%;
           }
           > div:last-child {
             flex: 1;
             width: 100%;
-            background-color: $background-color;
+            background-color: #fff;
           }
         }
       }

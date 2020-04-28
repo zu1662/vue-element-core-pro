@@ -15,6 +15,9 @@ import './use'
 import '@/styles/index.scss' // global css
 import initializer from '@/utils/initializer' // setting init
 
+// 注册主题
+import '@/styles/theme/index.scss'
+
 // permission
 import './router/permission' // permission control
 import PerssionPlugin from '@/plugins/permission' // page button permission plugin
@@ -25,6 +28,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 
 // request plugin
 import { AxiosPlugin } from '@/utils/request'
+document.body.className = 'theme-default'
 
 Vue.config.productionTip = false
 

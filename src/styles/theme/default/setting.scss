@@ -1,3 +1,23 @@
-// side bar 颜色变量
-$sidebar-submenu-bg:        #1f2d3d;
-$sidebar-submenu-hover-bg:  #001528;
+// theme name
+$theme-name:              'default';
+
+// 导航栏 颜色变量
+$sidebar-menu-active:     $primary-color; // 默认使用系统自定义颜色
+$sidebar-menu-active-bg: #eee;
+$sidebar-menu-hover-bg:  #eee;
+$side-text:              #333;
+$side-text-hover:        #333;
+
+// 导航栏 折叠样颜色变量
+$sidebar-collapse-menu-bg:        #fff;
+$sidebar-collapse-menu-hover-bg:  #eee;
+$side-collapse-text:              #333;
+$side-collapse-text-hover:        #333;
+
+// 主体 颜色变量
+$app-bg:      #fff;
+$page-view-bg:   fff;
+$border-color:#dcdee2;
+
+// Mobile 展示
+$mobile-sidebar-menu-bg: #ebf1f6;

@@ -53,8 +53,7 @@ export default {
   display: inline-block;
   cursor: pointer;
   color: inherit;
-  width: 20px;
-  height: 20px;
   vertical-align: 10px;
+  font-size: 15px;
 }
 </style>

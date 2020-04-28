@@ -2,7 +2,7 @@
   <el-color-picker
     v-model="theme"
     @change="handleChange"
-    :predefine="['#1890ff', '#67C23A','#E6A23C','#11a983', '#13c2c2', '#6959CD', '#f5222d', ]"
+    :predefine="['#1890FF', '#67C23A','#E6A23C','#11A983', '#13C2C2', '#6959CD', '#F5222D', ]"
     class="theme-picker"
     popper-class="theme-picker-dropdown"
   />
@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     handleChange (val) {
-      this.themeChalk.setTheme(val).then(res => {
+      this.themeChalk.setTheme(val, this.defaultTheme).then(res => {
         this.$emit('change', val)
       })
     }

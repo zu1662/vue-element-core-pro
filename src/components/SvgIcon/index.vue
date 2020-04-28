@@ -41,8 +41,4 @@ export default {
   fill: currentColor;
   overflow: hidden;
 }
-.el-submenu .el-menu-item .svg-icon {
-  width: 0.6em;
-  height: 0.6em;
-}
 </style>

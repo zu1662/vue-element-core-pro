@@ -2,7 +2,7 @@
  * @Author: zu1662
  * @LastEditor: zu1662
  * @Date: 2019-12-31 15:01:15
- * @LastEditTime: 2019-12-31 15:59:51
+ * @LastEditTime: 2020-04-28 16:56:20
  * @Description: 主题颜色切换
  */
 import { Message } from 'element-ui'
@@ -15,14 +15,16 @@ export default class ThemeChalk {
     this.defaultTheme = '#409EFF'
   }
 
-  async setTheme (val) {
-    const oldVal = this.chalk ? this.theme : this.defaultTheme
+  async setTheme (val, oldVal) {
+    if (!oldVal) {
+      oldVal = this.chalk ? this.theme : this.defaultTheme
+    }
     if (typeof val !== 'string') return
     const themeCluster = this.getThemeCluster(val.replace('#', ''))
     const originalCluster = this.getThemeCluster(oldVal.replace('#', ''))
 
     const $message = Message({
-      message: '  Compiling the theme',
+      message: 'Compiling the theme',
       customClass: 'theme-message',
       type: 'success',
       duration: 0,
@@ -56,7 +58,7 @@ export default class ThemeChalk {
     const styles = [].slice.call(document.querySelectorAll('style'))
       .filter(style => {
         const text = style.innerText
-        return new RegExp(oldVal, 'i').test(text) && !/Chalk Variables/.test(text)
+        return new RegExp(oldVal, 'ig').test(text) && !/Chalk Variables/.test(text)
       })
     styles.forEach(style => {
       const { innerText } = style
