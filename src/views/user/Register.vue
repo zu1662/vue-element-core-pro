@@ -8,7 +8,6 @@
     </div>
     <div class="login-panel">
       <div class="left">
-        <img src="@/assets/user/panel-left.png">
       </div>
       <div class="right">
         <div class="right-title">

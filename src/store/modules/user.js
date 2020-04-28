@@ -41,7 +41,7 @@ const user = {
           const result = response.result
           Vue.ls.set(ACCESS_TOKEN, result.token, 7 * 24 * 60 * 60 * 1000)
           commit('SET_TOKEN', result.token)
-          resolve(response)
+          resolve(result)
         }).catch(error => {
           reject(error)
         })

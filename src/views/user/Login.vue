@@ -1,68 +1,68 @@
 <template>
-  <el-container class="login-container">
-    <div class="login-header">
-      <div class="logo">
-        <svg-icon name="logo" class="login-svg" style="margin-right:10px"></svg-icon>
-      </div>
-      <div class="title">{{$t('user.loginTitle')}}</div>
-    </div>
+  <div class="login">
     <div class="login-panel">
-      <div class="left">
-        <img src="@/assets/user/panel-left.png">
-      </div>
-      <div class="right">
-        <div class="right-title">
-          <div class="title-name">{{$t('user.login')}}</div>
-          <lang-set @setLang="handleLangCommand"/>
+      <el-form
+        hide-required-asterisk
+        ref="loginForm"
+        id="loginForm"
+        :model="loginForm"
+        :rules="loginRules"
+        label-position="top"
+      >
+        <div class="logo">
+          <h1>{{titlename}}</h1>
         </div>
-        <el-form hide-required-asterisk :model="loginForm" status-icon :rules="loginRules" ref="loginForm" label-position="top" class="login-form">
-          <el-form-item class="base-item" prop="userName">
-            <label slot="label">
-              <svg-icon name="username" class="base-item-svg"></svg-icon>
-              <span>{{$t('user.username')}}</span>
-            </label>
-            <el-input class="login-input" v-model="loginForm.userName" :placeholder="$t('user.usernamePlaceholder')" autocomplete="off"></el-input>
-          </el-form-item>
-          <el-form-item class="base-item" prop="password">
-            <label slot="label">
-              <svg-icon name="password" class="base-item-svg"></svg-icon>
-              <span>{{$t('user.password')}}</span>
-            </label>
-            <el-input class="login-input" type="password" @keyup.enter.native="submitForm('loginForm')" v-model="loginForm.password" :placeholder="$t('user.passwordPlaceholder')" autocomplete="off"></el-input>
-          </el-form-item>
-          <div class="more-item">
-            <el-checkbox v-model="loginForm.autoLogin">{{$t('user.autoLogin')}}</el-checkbox>
-            <el-link type="primary" :underline="false">{{$t('user.forgetPsw')}}</el-link>
+        <el-form-item class="login-item" label="用户名" prop="userName">
+          <el-input
+            v-model="loginForm.userName"
+            placeholder="请输入用户名"
+            autocomplete="off"
+          >
+            <svg-icon slot="prefix" name="username"></svg-icon>
+          </el-input>
+        </el-form-item>
+        <el-form-item class="login-item" label="密码" prop="password">
+          <el-input
+            class="login-input"
+            type="password"
+            @keyup.enter.native="submitForm('loginForm')"
+            v-model="loginForm.password"
+            placeholder="请输入密码"
+            autocomplete="off"
+          >
+            <svg-icon slot="prefix" name="password"></svg-icon>
+          </el-input>
+        </el-form-item>
+        <div class="more-item">
+          <el-checkbox v-model="loginForm.autoLogin">{{$t('user.autoLogin')}}</el-checkbox>
+          <el-link type="primary" :underline="false">{{$t('user.forgetPsw')}}</el-link>
+        </div>
+        <el-form-item class="submit-item">
+          <el-button class="submit-btn" :loading="submitting" type="primary" @click="submitForm('loginForm')">登录</el-button>
+        </el-form-item>
+        <div class="more-item">
+          <div class="login-with">
+            <span>{{$t('user.loginWith')}}</span>
+            <svg-icon name="wechat"></svg-icon>
+            <svg-icon name="qq"></svg-icon>
           </div>
-          <el-form-item class="submit-item">
-            <el-button class="submit-btn" :loading="submitting" type="primary" @click="submitForm('loginForm')">{{$t('user.login')}}</el-button>
-          </el-form-item>
-          <div class="more-item">
-            <div class="login-with">
-              <span>{{$t('user.loginWith')}}</span>
-              <svg-icon name="wechat"></svg-icon>
-              <svg-icon name="qq"></svg-icon>
-            </div>
-            <el-link type="primary" @click="registe" :underline="false">{{$t('user.register')}}</el-link>
-          </div>
-        </el-form>
-      </div>
+          <el-link type="primary" @click="registe" :underline="false">{{$t('user.register')}}</el-link>
+        </div>
+      </el-form>
     </div>
-  </el-container>
+  </div>
 </template>
 <script>
 import md5 from 'md5'
-import LangSet from '@/components/LangSet'
 export default {
   name: 'Login',
-  components: { LangSet },
   data () {
     return {
       submitting: false,
+      titlename: process.env.VUE_APP_GLOBAL_TITLE || 'vue-element-core',
       loginForm: {
         userName: '',
-        password: '',
-        autoLogin: false
+        password: ''
       },
       loginRules: {
         userName: [
@@ -91,12 +91,12 @@ export default {
           password: nowPassword
         }
         this.$store.dispatch('Login', params).then(res => {
-          if (res.code === 200) {
+          if (res) {
             this.$router.push({ path: this.$route.redirect || '/' })
           } else {
             this.$notify.error({
               title: '错误',
-              message: res.message
+              message: res.msg
             })
           }
         }).catch(err => {
@@ -113,114 +113,37 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-  @import '~@/styles/var.scss';
-  $panel-width: 12rem;
-  $min-width: 90rem;
-  $panel-height: 60rem;
-  $min-height: 50rem;
-  $header-height: 6rem;
-
-  .login-container {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+  .login {
     width: 100%;
     height: 100%;
-    min-height: $min-height;
-    overflow-x: hidden;
-    background-image: linear-gradient(-45deg,#409EFF 10%,#004eff);
-    box-shadow: 0 6px 8px 0 rgba(0,0,0,.1);
-  }
-  .login-header {
-    display: flex;
-    align-items: center;
-    padding: 1rem 0;
-    width: $panel-width;
-    min-width: $min-width;
-    height: $header-height;
-    color: #fff;
-    .logo {
-      height: 100%;
-      .login-svg {
-        width: 15rem;
-        height: $header-height;
-      }
-    }
-    .title {
-      position: relative;
-      padding-left: 1rem;
-      font-size: $font-size-normal;
-      border-left: 0.1rem solid #fff;
-    }
-  }
-  /deep/ .login-input .el-input__inner{
-    border-top: none;
-    border-right: none;
-    border-left: none;
-    border-radius: 0;
-  }
-  .login-panel {
-    z-index: 1000;
-    display: flex;
-    width: $panel-width;
-    min-width: $min-width;
-    height: $panel-height;
-    border-radius: 10px;
-    box-shadow: $shadow-card;
-    background-color: #fff;
-    overflow: hidden;
-    .left {
-      flex: 3;
+    background: url("~@/assets/bg.jpg") no-repeat center center;
+    background-size: cover;
+
+    .login-panel {
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-    .right {
-      flex: 4;
-      padding: 2rem 3rem;
-      line-height: 3rem;
-      .right-title {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-top: 2rem;
-        font-size: 2.5rem;
-        .title-name {
-          position: relative;
-          &::before {
-            content: "";
-            position: absolute;
-            top: -8px;
-            left: 0;
-            width: 30px;
-            height: 4px;
-            opacity: .9;
-            border-radius: 50%;
-            background-image: linear-gradient(32deg,#8b7bff 4%,#004eff);
-            box-shadow: 0 6px 8px 0 rgba(0,0,0,.1);
-            border-radius: 20px;
-          }
-        }
-        .lang-svg {
-          font-size: 2rem;
-        }
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 400px;
+      background: rgba(0,0,0, 0.2);
+
+      .logo {
+        text-align: center;
       }
-      .login-form {
-        margin: 5rem 5rem 0 5rem;
-        .base-item {
-          .base-item-svg {
-            margin-right: 0.5rem;
-            font-size: 1.8rem;
-            color: #666;
-          }
-        }
+
+      /deep/ #loginForm {
+        width: 300px;
+        color: #fff;
         .more-item{
-          margin: 1rem 0;
+          margin: 1.5rem 0;
           display: flex;
           justify-content: space-between;
           .login-with {
             font-size: 1.4rem;
-            color: #666;
+            color: #fff;
             display: flex;
             align-items: center;
             .svg-icon {
@@ -228,17 +151,24 @@ export default {
               margin-left: 1.5rem;
               cursor: pointer;
               &:hover {
-                color: #409EFF;
+                color: $primary-color;
               }
             }
           }
         }
-        .submit-item {
-          margin-top: 3rem;
-          .submit-btn {
-            width: 100%;
-            margin: 0 1rem;
+        .login-item {
+          margin: 15px 0;
+          .el-form-item__label {
+            color: #fff;
           }
+          .el-input__prefix {
+            margin-left: .3rem;
+            color: #666666;
+          }
+        }
+        .submit-btn {
+          margin-top: 2.5rem;
+          width: 100%;
         }
       }
     }
