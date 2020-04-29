@@ -6,10 +6,27 @@
   }
 
   // 主体部分
-  .page-view {
-    background-color: $page-view-bg;
+  .app-body {
+    background-color: $app-body-bg;
   }
 
+  // breadcrumb
+  .el-breadcrumb {
+    a {
+      color: $breadcrumb-color;
+    }
+    .el-breadcrumb__inner {
+      .no-redirect {
+        color: $breadcrumb-noredirect-color;
+      }
+    }
+  }
+
+  // hamburger
+  .hamburger.svg-icon {
+    color: $hamburger-color;
+  }
+  
   // 导航栏（header）
   .navbar {
     background: transparent;
@@ -22,6 +39,21 @@
   // 页签栏（tag）
   .tags-view-container {
     border-bottom: 1px solid $border-color;
+    .tags-view-wrapper {
+      .tags-view-item {
+        border-right: 1px solid $tab-border-color;
+        background-color: $tag-bg-color;
+        color: $tag-text-color;
+        &.active {
+          background: $tag-active-bg-color;
+        }
+        .el-icon-close {
+          &:hover {
+            background-color: $tab-close-bg-color;
+          }
+        }
+      }
+    }
   }
 
   // 菜单栏logo

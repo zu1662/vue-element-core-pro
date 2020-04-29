@@ -83,8 +83,7 @@ export default {
     getMetaTitle: getMetaTitle,
     getActiveStyle () {
       return {
-        backgroundColor: this.theme,
-        borderColor: this.theme
+        color: this.theme
       }
     },
     isActive (route) {
@@ -242,37 +241,46 @@ export default {
   background: transparent;
   .tags-view-wrapper {
     .tags-view-item {
-      display: inline-flex;
-      align-items: center;
+      display: inline-block;
       position: relative;
       cursor: pointer;
-      height: 30px;
-      line-height:30px;
-      border: 1px solid $border-color;
-      border-radius: 0.2rem;
+      height: $tag-height;
+      line-height:$tag-height;
       color: #495060;
-      background: #fff;
-      padding: 0.2rem 1.2rem;
+      background: #eee;
+      padding: 0 1.2rem;
       font-size: 1.4rem;
-      margin-left: 1rem;
-      margin-top: 0.5rem;
-      &:first-of-type {
-        margin-left: 15px;
-      }
-      &:last-of-type {
-        margin-right: 15px;
-      }
       &.active {
-        color: #fff;
+        background: #fff;
+      }
+
+      .el-icon-close {
+        width: 0rem;
+        height: 2rem;
+        font-size: 2rem;
+        line-height: 2rem;
+        border-radius: 50%;
+        text-align: center;
+        transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+        transform-origin: 100% 50%;
+        vertical-align: middle;
+        right: -2px;
+        position: relative;
+        opacity: 0;
         &::before {
-          content: "";
-          background: #fff;
+          transform: scale(0.6);
           display: inline-block;
-          width: 8px;
-          height: 8px;
-          border-radius: 50%;
-          position: relative;
-          margin-right: 0.5rem;
+        }
+        &:hover {
+          background-color: #b4bccc;
+          color: #fff;
+        }
+      }
+
+      &:hover,&.active {
+        .el-icon-close {
+          width: 2rem;
+          opacity: 1;
         }
       }
     }
@@ -294,33 +302,6 @@ export default {
       cursor: pointer;
       &:hover {
         background: #eee;
-      }
-    }
-  }
-}
-</style>
-
-<style lang="scss">
-//reset element css of el-icon-close
-.tags-view-wrapper {
-  .tags-view-item {
-    .el-icon-close {
-      margin-left: 0.5rem;
-      width: 2rem;
-      height: 2rem;
-      font-size: 2rem;
-      line-height: 2rem;
-      border-radius: 50%;
-      text-align: center;
-      transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-      transform-origin: 100% 50%;
-      &::before {
-        transform: scale(0.6);
-        display: inline-block;
-      }
-      &:hover {
-        background-color: #b4bccc;
-        color: #fff;
       }
     }
   }

@@ -28,7 +28,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 
 // request plugin
 import { AxiosPlugin } from '@/utils/request'
-document.body.className = 'theme-default'
+document.body.className = 'theme-dark'
 
 Vue.config.productionTip = false
 
