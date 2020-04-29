@@ -7,7 +7,7 @@
       background-color="transparent"
       :text-color="variables.sideText"
       :unique-opened="false"
-      :active-text-color="theme"
+      :active-text-color="color"
       :collapse-transition="false"
       :mode="sidebarType ? 'vertical' : 'horizontal'"
     >
@@ -37,7 +37,7 @@ export default {
     ]),
     ...mapState({
       showLogo: state => state.settings.sidebarLogo,
-      theme: state => state.settings.theme
+      color: state => state.settings.color
     }),
     activeMenu () {
       const route = this.$route

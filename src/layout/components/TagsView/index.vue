@@ -56,7 +56,7 @@ export default {
   computed: {
     ...mapState({
       visitedViews: state => state.tagsView.visitedViews,
-      theme: state => state.settings.theme
+      color: state => state.settings.color
     }),
     ...mapGetters([
       'addRouters'
@@ -83,7 +83,7 @@ export default {
     getMetaTitle: getMetaTitle,
     getActiveStyle () {
       return {
-        color: this.theme
+        color: this.color
       }
     },
     isActive (route) {
@@ -236,7 +236,7 @@ export default {
   }
 }
 .tags-view-container {
-  height:  $tag-height;
+  height:  calc(#{$tag-height} - 3px);;
   width: 100%;
   background: transparent;
   .tags-view-wrapper {

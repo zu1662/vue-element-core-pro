@@ -9,15 +9,15 @@ import ThemeChalk from '@/utils/themeChalk'
 export default {
   name: 'app',
   computed: {
-    nowTheme () {
-      return this.$store.state.settings.theme
+    nowColor () {
+      return this.$store.state.settings.color
     }
   },
   mounted () {
     this.$log.capsule('env', process.env.NODE_ENV)
     const themeChalk = new ThemeChalk()
     this.$nextTick(_ => {
-      themeChalk.setTheme(this.nowTheme)
+      themeChalk.setTheme(this.nowColor)
     })
   }
 }

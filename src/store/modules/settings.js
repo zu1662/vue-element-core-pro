@@ -1,6 +1,8 @@
 import Vue from 'vue'
+import { changeTheme } from '@/utils/domUtil'
 import {
-  THEME_COLOR,
+  GLOBAL_COLOR,
+  GLOBAL_THEME,
   SHOW_SETTINGS,
   TAGS_VIEW,
   FIXED_HEADER,
@@ -9,7 +11,8 @@ import {
 } from '@/config/variableInit'
 
 const mapping = {
-  theme: THEME_COLOR,
+  theme: GLOBAL_THEME,
+  color: GLOBAL_COLOR,
   showSettings: SHOW_SETTINGS,
   tagsView: TAGS_VIEW,
   fixedHeader: FIXED_HEADER,
@@ -19,7 +22,8 @@ const mapping = {
 
 const settings = {
   state: {
-    theme: '#409EFF',
+    theme: 'default',
+    color: '#409EFF',
     showSettings: true,
     tagsView: true,
     fixedHeader: true,
@@ -28,6 +32,7 @@ const settings = {
   },
   mutations: {
     CHANGE_SETTING: (state, { key, value }) => {
+      if (key === 'theme') changeTheme(value)
       if (Object.prototype.hasOwnProperty.call(state, key)) {
         state[key] = value
         Vue.ls.set(mapping[key], value)

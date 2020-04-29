@@ -23,8 +23,13 @@
         </el-tooltip>
       </div>
       <div class="drawer-item">
-        <span>Theme Color</span>
-        <theme-picker style="float: right;height: 26px;margin: -3px 8px 0 0;" @change="themeChange" />
+        <span>Global Color</span>
+        <color-picker style="float: right;height: 26px;margin: -3px 8px 0 0;" @change="colorChange" />
+      </div>
+
+      <div class="drawer-item">
+        <span>Global Theme</span>
+        <i class="el-icon-s-open theme-icon" @click="showThemeDialog"></i>
       </div>
 
       <div class="drawer-item">
@@ -43,14 +48,16 @@
       </div>
 
     </div>
+    <theme-picker ref="themePicker"/>
   </div>
 </template>
 
 <script>
+import ColorPicker from '@/components/ColorPicker'
 import ThemePicker from '@/components/ThemePicker'
 
 export default {
-  components: { ThemePicker },
+  components: { ColorPicker, ThemePicker },
   data () {
     return {}
   },
@@ -102,17 +109,33 @@ export default {
         value: layout
       })
     },
-    themeChange (val) {
+    colorChange (val) {
       this.$store.dispatch('changeSetting', {
-        key: 'theme',
+        key: 'color',
         value: val
       })
+    },
+    showThemeDialog () {
+      this.$refs.themePicker.setDialog(true)
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.theme-icon {
+  padding: 3px;
+  border: 1px solid #eee;
+  float: right;
+  font-size: 25px;
+  margin-right: 5px;
+  color: $primary-color;
+  cursor: pointer;
+  transition: all ease-in .2s;
+  &:hover {
+    background-color: #eee;
+  }
+}
 .drawer-container {
   padding: 24px;
   font-size: 14px;

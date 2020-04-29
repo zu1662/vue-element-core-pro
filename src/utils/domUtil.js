@@ -1,4 +1,5 @@
 import i18n from '@/locales'
+import { settings } from '@/config/defaultSetting'
 
 // set document title
 export const setDocumentTitle = function (routeMeta, mainTitle) {
@@ -78,4 +79,14 @@ export function removeClass (el, cls) {
   if (!el.classList) {
     el.className = (curClass || '').replace(/^[\s\uFEFF]+|[\s\uFEFF]+$/g, '')
   }
+}
+
+// Theme change
+export function changeTheme (themeName) {
+  // 检查当前主题在主题列表内是否存在
+  const list = settings.themeList || []
+  if (!list.find(item => item.name === themeName)) {
+    themeName = 'default'
+  }
+  document.body.className = `theme-${themeName}`
 }

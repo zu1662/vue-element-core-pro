@@ -44,8 +44,10 @@
         border-right: 1px solid $tab-border-color;
         background-color: $tag-bg-color;
         color: $tag-text-color;
+        border-bottom: 1px solid $border-color;
         &.active {
           background: $tag-active-bg-color;
+          border-bottom: none;
         }
         .el-icon-close {
           &:hover {

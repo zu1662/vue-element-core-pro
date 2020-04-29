@@ -5,7 +5,8 @@ import {
   SET_LOCKER,
   LOCKER_PSW,
   LOCKER_REDIRECT,
-  THEME_COLOR,
+  GLOBAL_COLOR,
+  GLOBAL_THEME,
   SHOW_SETTINGS,
   TAGS_VIEW,
   FIXED_HEADER,
@@ -26,7 +27,8 @@ export default function Initializer () {
     window.name = 'isReload'
   }
 
-  store.commit('CHANGE_SETTING', { key: 'theme', value: Vue.ls.get(THEME_COLOR, settings.theme) })
+  store.commit('CHANGE_SETTING', { key: 'color', value: Vue.ls.get(GLOBAL_COLOR, settings.color) })
+  store.commit('CHANGE_SETTING', { key: 'theme', value: Vue.ls.get(GLOBAL_THEME, settings.theme) })
   store.commit('CHANGE_SETTING', { key: 'showSettings', value: Vue.ls.get(SHOW_SETTINGS, settings.showSettings) })
   store.commit('CHANGE_SETTING', { key: 'tagsView', value: Vue.ls.get(TAGS_VIEW, settings.tagsView) })
   store.commit('CHANGE_SETTING', { key: 'fixedHeader', value: Vue.ls.get(FIXED_HEADER, settings.fixedHeader) })

@@ -1,57 +1,59 @@
 <template>
-  <el-color-picker
-    v-model="theme"
-    @change="handleChange"
-    :predefine="['#1890FF', '#67C23A','#E6A23C','#11A983', '#13C2C2', '#6959CD', '#F5222D', ]"
-    class="theme-picker"
-    popper-class="theme-picker-dropdown"
-  />
+  <el-dialog
+    title="主题"
+    width="600px"
+    :visible.sync="dialogVisible"
+    :append-to-body="true"
+  >
+    <el-table :data="themeList" border>
+      <el-table-column label="主题名称" prop="title" align="center" width="160"/>
+      <el-table-column label="预览" width="120">
+        <template slot-scope="scope">
+          <div class="theme-preview" :style="{ backgroundImage: `url(${scope.row.preview})` }"/>
+        </template>
+      </el-table-column>
+      <el-table-column label="操作" align="center">
+        <template slot-scope="scope">
+          <el-button v-if="defaultTheme === scope.row.name" type="success" icon="el-icon-check" round>已激活</el-button>
+          <el-button v-else round @click="handleSelectTheme(scope.row.name)">使用</el-button>
+        </template>
+      </el-table-column>
+    </el-table>
+  </el-dialog>
 </template>
 
 <script>
-import ThemeChalk from '@/utils/themeChalk'
+import { settings } from '@/config/defaultSetting'
 export default {
-  data () {
-    return {
-      theme: '',
-      themeChalk: undefined
-    }
-  },
   computed: {
     defaultTheme () {
       return this.$store.state.settings.theme
     }
   },
-  created () {
-    this.theme = this.defaultTheme
-  },
-  mounted () {
-    this.themeChalk = new ThemeChalk(this.defaultTheme)
-    this.themeChalk.setTheme(this.defaultTheme)
+  data () {
+    return {
+      themeList: settings.themeList,
+      dialogVisible: false
+    }
   },
   methods: {
-    handleChange (val) {
-      this.themeChalk.setTheme(val, this.defaultTheme).then(res => {
-        this.$emit('change', val)
+    setDialog (val) {
+      this.dialogVisible = val
+    },
+    handleSelectTheme (themeName) {
+      this.$store.dispatch('changeSetting', {
+        key: 'theme',
+        value: themeName
       })
     }
   }
 }
 </script>
-
-<style>
-.theme-message,
-.theme-picker-dropdown {
-  z-index: 99999 !important;
-}
-
-.theme-picker .el-color-picker__trigger {
-  height: 26px !important;
-  width: 26px !important;
-  padding: 2px;
-}
-
-.theme-picker-dropdown .el-color-dropdown__link-btn {
-  display: none;
+<style lang="scss" scoped>
+.theme-preview {
+  height: 50px;
+  width: 100px;
+  border-radius: 4px;
+  background-size: cover;
 }
 </style>
