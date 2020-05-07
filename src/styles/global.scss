@@ -19,6 +19,7 @@
   &.fixedHeader {
     height: 100%;
     .app-body {
+      position: relative;
       overflow: auto;
       height: 100%;
     }
