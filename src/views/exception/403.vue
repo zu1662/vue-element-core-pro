@@ -1,23 +1,16 @@
 <template>
   <div>
-    <el-input v-model="inputVal"></el-input>
-    <count-up
-      :start="0"
-      :end="1390"
-      :decimals="2"
-      :duration="5"
-      :options="{ separator: ','}"
-    ></count-up>
+    <ellipsis :length="300" :content="inputVal" tooltip>我去恶趣味我去饿我去打打2313解耦i丘吉尔哦i九七</ellipsis>
   </div>
 </template>
 
 <script>
-import CountUp from '@/components/CountUp'
+import Ellipsis from '@/components/Ellipsis'
 export default {
-  components: { CountUp },
+  components: { Ellipsis },
   data () {
     return {
-      inputVal: ''
+      inputVal: '我去恶趣味我去饿我去打打2313解耦i丘吉尔哦i九七'
     }
   }
 }

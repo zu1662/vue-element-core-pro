@@ -12,6 +12,7 @@ npm install
 npm run serve
 ```
 
+> When you can't run successfully with the node-sass error, you can fix it with `npm rebuild node-sass`
 ### Compiles and minifies for production
 
 ```bash
