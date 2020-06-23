@@ -1,9 +1,9 @@
 // vscode 的路径配置
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
-      "@/*": ["./src/*"],
+      "@/*": ["src/*"],
     }
   },
   "exclude": [

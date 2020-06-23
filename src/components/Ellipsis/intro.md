@@ -1,3 +1,10 @@
+<!--
+ * @Author: zu1662
+ * @LastEditor: zu1662
+ * @Date: 2020-06-02 10:16:20
+ * @LastEditTime: 2020-06-23 15:23:57
+ * @Description:  文本自动省略号
+ -->
 # Ellipsis 文本自动省略号
 
 文本过长自动处理省略号, 支持按照文本长度和最大行数两种方式截取。
@@ -14,7 +21,7 @@ export default {
 }
 ```
 
-## 代码演示  [demo](https://pro.loacg.com/test/home)
+## 代码演示
 
 ```html
 <ellipsis :length="100" :lines="3" tooltip>
