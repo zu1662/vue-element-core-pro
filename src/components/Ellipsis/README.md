@@ -2,7 +2,7 @@
  * @Author: zu1662
  * @LastEditor: zu1662
  * @Date: 2020-06-02 10:16:20
- * @LastEditTime: 2020-06-23 15:23:57
+ * @LastEditTime: 2020-06-24 11:11:08
  * @Description:  文本自动省略号
  -->
 # Ellipsis 文本自动省略号
@@ -34,6 +34,7 @@ export default {
 
 参数 | 说明 | 类型 | 默认值
 ----|------|-----|------
-tooltip | 移动到文本展示完整内容的提示 | boolean | -
+prefixCls | class 前缀 | string | ellipsis
+tooltip | 移动到文本展示完整内容的提示 | boolean | false
 length | 在按照长度截取下的文本最大字符数，超过则截取省略 | number | -
-lines | 在按照最大行数进行截取，超过则截取省略 | number | -
+lines | 在按照最大行数进行截取，超过则截取省略 | number | 1

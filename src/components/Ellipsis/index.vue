@@ -10,7 +10,8 @@ export default {
       default: 'ellipsis'
     },
     tooltip: {
-      type: Boolean
+      type: Boolean,
+      default: false
     },
     length: {
       type: Number,

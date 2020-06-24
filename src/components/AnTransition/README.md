@@ -2,9 +2,10 @@
  * @Author: zu1662
  * @LastEditor: zu1662
  * @Date: 2020-06-02 10:16:20
- * @LastEditTime: 2020-06-23 15:23:51
+ * @LastEditTime: 2020-06-24 11:12:39
  * @Description: 动画过渡效果 
  -->
+
 # animate 动画过渡效果
 
 基于 animate.css 的动画过渡效果
@@ -37,5 +38,5 @@ export default {
 
 参数 | 说明 | 类型 | 默认值
 ----|------|-----|------
-enterActiveClass | 进入动画名称（animate.css） | string | -
-leaveActiveClass | 离开动画名称（animate.css） | string | -
+enterActiveClass | 进入动画名称（animate.css） | string | fadeIn
+leaveActiveClass | 离开动画名称（animate.css） | string | fadeOut
