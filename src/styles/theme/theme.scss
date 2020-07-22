@@ -67,6 +67,11 @@
   // 菜单项目
   .sidebar-container {
     border-right: 1px solid $border-color;
+
+    // copyright颜色设置
+    .copyright {
+      color: $app-text-color;
+    }
   }
   @mixin sidebar-menu-style {
     color: $side-text;

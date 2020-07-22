@@ -1,18 +1,28 @@
 <template>
   <div :class="{'has-logo': showLogo}">
     <logo v-if="showLogo" :collapse="isCollapse" />
-    <el-menu
-      :default-active="activeMenu"
-      :collapse="isCollapse"
-      background-color="transparent"
-      :text-color="variables.sideText"
-      :unique-opened="false"
-      :active-text-color="color"
-      :collapse-transition="false"
-      :mode="sidebarType ? 'vertical' : 'horizontal'"
-    >
-      <sidebar-item v-for="route in permission_routes" :key="route.path" :item="route" :base-path="route.path" />
-    </el-menu>
+    <el-scrollbar wrap-class="scrollbar-wrapper">
+      <el-menu
+        :default-active="activeMenu"
+        :collapse="isCollapse"
+        background-color="transparent"
+        :text-color="variables.sideText"
+        :unique-opened="false"
+        :active-text-color="color"
+        :collapse-transition="false"
+        :mode="sidebarType ? 'vertical' : 'horizontal'"
+      >
+        <sidebar-item v-for="route in permission_routes" :key="route.path" :item="route" :base-path="route.path" />
+      </el-menu>
+      <transition name="el-fade-in">
+        <div class="copyright" v-if="!isCollapse">
+          <span>© Copyright {{nowYear}} Core Admin</span>
+          <!-- <transition name="el-fade-in">
+            <img src="@/assets/sidebar_bg.png" alt="" v-if="showImg">
+          </transition> -->
+        </div>
+      </transition>
+    </el-scrollbar>
   </div>
 </template>
 
@@ -53,6 +63,9 @@ export default {
     },
     isCollapse () {
       return !this.sidebar.opened
+    },
+    nowYear () {
+      return new Date().getFullYear()
     }
   },
   created () {

@@ -5,8 +5,8 @@
         <svg-icon style="cursor: pointer;" name="language" class="lang-svg"></svg-icon>
       </span>
       <el-dropdown-menu slot="dropdown">
-        <el-dropdown-item command="zh">{{$t('lang.zh')}}</el-dropdown-item>
-        <el-dropdown-item command="en">{{$t('lang.en')}}</el-dropdown-item>
+        <el-dropdown-item command="zh">中文</el-dropdown-item>
+        <el-dropdown-item command="en">English</el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>
   </div>
@@ -23,3 +23,16 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+.lang-set {
+  .el-dropdown {
+    color: inherit;
+    }
+}
+.lang-svg {
+  display: inline-block;
+  cursor: pointer;
+  color: inherit;
+  font-size: 15px;
+}
+</style>
