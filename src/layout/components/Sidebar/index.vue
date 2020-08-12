@@ -1,7 +1,7 @@
 <template>
   <div :class="{'has-logo': showLogo}">
     <logo v-if="showLogo" :collapse="isCollapse" />
-    <el-scrollbar wrap-class="scrollbar-wrapper">
+    <el-scrollbar wrap-class="scrollbar-wrapper" v-if="sidebarType">
       <el-menu
         :default-active="activeMenu"
         :collapse="isCollapse"
@@ -23,6 +23,19 @@
         </div>
       </transition>
     </el-scrollbar>
+    <el-menu
+      v-else
+      :default-active="activeMenu"
+      :collapse="isCollapse"
+      background-color="transparent"
+      :text-color="variables.sideText"
+      :unique-opened="false"
+      :active-text-color="color"
+      :collapse-transition="false"
+      :mode="sidebarType ? 'vertical' : 'horizontal'"
+    >
+      <sidebar-item v-for="route in permission_routes" :key="route.path" :item="route" :base-path="route.path" />
+    </el-menu>
   </div>
 </template>
 
