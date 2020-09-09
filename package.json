@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "dev": "npm run serve",
+    "dev": "vue-cli-service serve",
     "stage": "vue-cli-service build --mode staging",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "test": "jest --clearCache && jest"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
@@ -43,7 +44,10 @@
     "@vue/cli-plugin-babel": "^4.1.0",
     "@vue/cli-plugin-eslint": "^4.1.0",
     "@vue/cli-service": "^4.1.0",
+    "@vue/test-utils": "^1.0.5",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^8.0.3",
+    "babel-jest": "^26.3.0",
     "eslint": "^6.8.0",
     "eslint-config-standard": "^14.1.0",
     "eslint-plugin-html": "^6.0.0",
@@ -52,6 +56,9 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "eslint-plugin-vue": "^6.0.1",
+    "jest": "^26.4.2",
+    "jest-serializer-vue": "^2.0.2",
+    "jest-transform-stub": "^2.0.0",
     "lint-staged": "^9.5.0",
     "node-sass": "^4.14.0",
     "sass-loader": "^8.0.2",
@@ -61,6 +68,7 @@
     "svgo-loader": "^2.2.1",
     "vue-cli-plugin-style-resources-loader": "^0.1.4",
     "vue-eslint-parser": "^7.0.0",
+    "vue-jest": "^3.0.6",
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.6.10"
   },

@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import ThemeChalk from '@/utils/themeChalk'
 export default {
   name: 'app',
   computed: {
@@ -15,9 +14,8 @@ export default {
   },
   mounted () {
     this.$log.capsule('env', process.env.NODE_ENV)
-    const themeChalk = new ThemeChalk()
     this.$nextTick(_ => {
-      themeChalk.setTheme(this.nowColor)
+      this.$themeChalk.setTheme(this.nowColor)
     })
   }
 }

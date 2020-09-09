@@ -5,6 +5,7 @@ import store from './store/'
 import i18n from './locales'
 import VueStorage from 'vue-ls'
 import { storageOptions } from '@/config/defaultSetting'
+import ThemeChalk from '@/utils/themeChalk'
 
 // mock
 import './mock'
@@ -36,6 +37,9 @@ Vue.use(PerssionPlugin)
 Vue.use(ElementUI)
 Vue.use(VueStorage, storageOptions)
 Vue.use(AxiosPlugin)
+
+// 把 themeChalk 挂载到全局上，只需要请求一次资源即可。
+Vue.prototype.$themeChalk = new ThemeChalk()
 
 new Vue({
   router,

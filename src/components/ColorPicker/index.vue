@@ -9,12 +9,10 @@
 </template>
 
 <script>
-import ThemeChalk from '@/utils/themeChalk'
 export default {
   data () {
     return {
-      color: '',
-      themeChalk: undefined
+      color: ''
     }
   },
   computed: {
@@ -26,12 +24,12 @@ export default {
     this.color = this.defaultColor
   },
   mounted () {
-    this.themeChalk = new ThemeChalk(this.defaultColor)
-    this.themeChalk.setTheme(this.defaultColor)
+    // this.themeChalk = new ThemeChalk(this.defaultColor)
+    // this.themeChalk.setTheme(this.defaultColor)
   },
   methods: {
     handleChange (val) {
-      this.themeChalk.setTheme(val, this.defaultColor).then(res => {
+      this.$themeChalk.setTheme(val, this.defaultColor).then(res => {
         this.$emit('change', val)
       })
     }
