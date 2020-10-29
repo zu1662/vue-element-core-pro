@@ -19,9 +19,9 @@
   &.fixedHeader {
     height: 100%;
     .app-body {
+      margin: 0;
       position: relative;
-      overflow: auto;
-      height: 100%;
+      padding: 0;
     }
   }
 

@@ -63,7 +63,7 @@ export const asyncRouterMap = [
         children: [
           {
             path: '/dashboard/index',
-            name: 'index',
+            name: 'dashboardIndex',
             component: () => import('@/views/dashboard/index'),
             meta: { title: '主页', titlePath: 'dashboard', keepAlive: true, icon: 'dashboard', permissionCode: 'dashboard:index', affix: true }
           }

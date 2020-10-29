@@ -45,8 +45,13 @@ export default {
   /* 50= navbar  50  */
   height: calc(100% - #{$header-height});
   width: 100%;
-  position: relative;
+  overflow-y: hidden;
   overflow-x: hidden;
+  .app-body {
+    height: -webkit-fill-available;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
 }
 
 .fixed-header + .app-main {
