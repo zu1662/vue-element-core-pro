@@ -2,7 +2,7 @@
  * @Author: zu1662
  * @LastEditor: zu1662
  * @Date: 2019-12-31 16:54:16
- * @LastEditTime: 2020-03-05 17:15:00
+ * @LastEditTime : 2020-11-06 11:20:53
  * @Description: 自定义的一些插件，在这里引入
  */
 
@@ -11,6 +11,7 @@ import Vue from 'vue'
 // directives
 import '@/directives/waves'
 import '@/directives/highlight'
+import '@/directives/scroll'
 
 // filters
 import './filters'
